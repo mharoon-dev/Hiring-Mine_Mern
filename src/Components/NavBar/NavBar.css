@@ -1,0 +1,18 @@
+.navItems {
+    color: lightgray !important;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
+    text-decoration: none !important;
+}
+
+.navItems > li {
+    width: max-content !important;
+    margin: 0 10px;
+}
+
+@media (min-width: 992px) {
+    .themeDiv {
+        margin-left: 10rem !important;
+    }
+}
