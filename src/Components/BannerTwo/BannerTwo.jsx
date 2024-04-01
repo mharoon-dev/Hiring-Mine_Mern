@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Banner() {
+export default function BannerTwo() {
   return (
     <div
       className="banner pt-5 d-flex justify-content-center align-items-center"

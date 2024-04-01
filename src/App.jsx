@@ -1,21 +1,17 @@
-import { useState } from "react";
+import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import "./App.css";
-import NavBar from "./Components/NavBar/NavBar";
-import SearchBar from "./Components/SearchBar/SearchBar";
-import Banner from "./Components/Banner/Banner.";
-import Categories from "./Components/Categories/Categories";
-import Jobs from "./Components/Jobs/Jobs";
-import Banner2 from "./Components/BannerTwo/BannerTwo";
+import Home from "./Pages/Home";
+import Jobs from "./Pages/Jobs";
 
 function App() {
     return (
         <>
-        <NavBar />
-        <SearchBar />
-        <Banner />
-        <Categories />
-        <Banner2 />
-        <Jobs />
+        <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/Jobs/:jobName" element={<Jobs />} />
+        </Routes>
+      </BrowserRouter>
         </>
     )
 }

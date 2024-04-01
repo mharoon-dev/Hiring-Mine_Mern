@@ -1,7 +1,33 @@
+import { useState } from "react";
 import PopularSearchBtn from "../PopularSearchBtn/PopularSearchBtn";
 import "./SearchBar.css";
+import { useFetchData } from "../../CumstomHook/useDataFetch.jsx";
 
 export default function SearchBar() {
+  const [inputValue, setInputValue] = useState("");
+  const popularSearches = [
+    "Software ",
+    "Developer",
+    "Backend",
+    "React",
+    "Node",
+    "React Native",
+    "Flutter",
+    "UI/UX",
+    "Designer",
+    "Web",
+    "SEO",
+    "Marketing",
+  ];
+
+  const handleSearch = () => {
+    console.log(inputValue);
+    useFetchData(
+      `https://backend-prod.app.hiringmine.com/api/jobAds/all?limit=10&pageNo=1&keyWord=${inputValue}&category=`
+    );
+    search && console.log(search);
+  };
+
   return (
     <>
       <div className="container" style={{ borderColor: "red" }}>
@@ -18,6 +44,7 @@ export default function SearchBar() {
         <div className="d-flex justify-content-between justify-content-md-start  mt-3 ">
           <div className="input-group me-3 inputDiv">
             <input
+              onChange={(e) => setInputValue(e.target.value)}
               type="text"
               className="form-control inputValue"
               placeholder="Find Job"
@@ -26,21 +53,21 @@ export default function SearchBar() {
               <img src="/assets/search icon.png" width="20rem" />
             </span>
           </div>
-          <button className="findBtn">Find Jobs</button>
+          {/* find button */}
+          <button
+            className="findBtn"
+            onClick={() => handleSearch()}>
+            Find Jobs
+          </button>
+
         </div>
 
         <h1 className="heading2 mt-5">Popular Searches</h1>
 
-        <div className="popularSearchesDiv mt-4 d-flex justify-content-start gap-3 flex-wrap align-items-center"  >
-        <PopularSearchBtn />
-        <PopularSearchBtn />
-        <PopularSearchBtn />
-        <PopularSearchBtn />
-        <PopularSearchBtn />
-        <PopularSearchBtn />
-        <PopularSearchBtn />
-        <PopularSearchBtn />
-        <PopularSearchBtn />
+        <div className="popularSearchesDiv mt-4 d-flex justify-content-start gap-3 flex-wrap align-items-center">
+          {popularSearches.map((item) => (
+            <PopularSearchBtn name={item} />
+          ))}
         </div>
       </div>
     </>

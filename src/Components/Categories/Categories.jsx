@@ -2,6 +2,16 @@ import CategoriesCard from "../CategoriesCard/CategoriesCard";
 import "./Categories.css";
 
 export default function Categories() {
+  const categories = [
+    "Development",
+    "Marketing & Sales",
+    "Art & illustration",
+    "Animation",
+    "SEO",
+    "Content Writer",
+    "Call Center",
+    "HR & Finance",
+  ]
   return (
     <div
       className="container-fluid"
@@ -18,16 +28,9 @@ export default function Categories() {
         </div>
 
         <div className="categoriesDiv mt-4 d-flex justify-content-center align-items-center flex-wrap gap-4">
-          <CategoriesCard />
-          <CategoriesCard />
-          <CategoriesCard />
-          <CategoriesCard />
-          <CategoriesCard />
-          <CategoriesCard />
-          <CategoriesCard />
-          <CategoriesCard />
-          <CategoriesCard />
-          <CategoriesCard />
+          {categories.map((category) => (
+            <CategoriesCard key={category} categoryName={category} />
+          ))}
         </div>
       </div>
     </div>

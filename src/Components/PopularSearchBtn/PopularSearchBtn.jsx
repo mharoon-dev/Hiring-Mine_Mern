@@ -1,9 +1,9 @@
 import './PopularSearchBtn.css';
 
-export default function PopularSearchBtn() {
+export default function PopularSearchBtn({name}) {
   return (
     <button className="popularSearchBtn">
-        React
+        {name}
     </button>
   )
 }
