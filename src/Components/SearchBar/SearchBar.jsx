@@ -2,6 +2,7 @@ import { useState } from "react";
 import PopularSearchBtn from "../PopularSearchBtn/PopularSearchBtn";
 import "./SearchBar.css";
 import { useFetchData } from "../../CumstomHook/useDataFetch.jsx";
+import { Link } from "react-router-dom";
 
 export default function SearchBar() {
   const [inputValue, setInputValue] = useState("");
@@ -19,14 +20,6 @@ export default function SearchBar() {
     "SEO",
     "Marketing",
   ];
-
-  const handleSearch = () => {
-    console.log(inputValue);
-    useFetchData(
-      `https://backend-prod.app.hiringmine.com/api/jobAds/all?limit=10&pageNo=1&keyWord=${inputValue}&category=`
-    );
-    search && console.log(search);
-  };
 
   return (
     <>
@@ -54,12 +47,9 @@ export default function SearchBar() {
             </span>
           </div>
           {/* find button */}
-          <button
-            className="findBtn"
-            onClick={() => handleSearch()}>
-            Find Jobs
-          </button>
-
+          <Link to={`/jobs/${inputValue}`}>
+            <button className="findBtn">Find Jobs</button>
+          </Link>
         </div>
 
         <h1 className="heading2 mt-5">Popular Searches</h1>

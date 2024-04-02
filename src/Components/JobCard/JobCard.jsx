@@ -3,10 +3,7 @@ import "./JobCard.css";
 export default function JobCard({ job }) {
   // console.log(job);
   return (
-    <div
-      className="bg-white p-2 py-3 card "
-      style={{ width: "18rem", border: "1px solid #5d49e1" }}
-    >
+    <div className="bg-white p-2 py-3 card ">
       <div className="d-flex justify-content-between align-items-center w-100">
         <h6 id="companyName" className="ms-2  mb-0">
           {job.companyName || "Not Mentioned"}
@@ -23,7 +20,11 @@ export default function JobCard({ job }) {
       </h5>
 
       <p id="description" className="ms-2 mt-2">
-        <div dangerouslySetInnerHTML={{ __html: job.desc.slice(0, 100) || "Not Mentioned"  }} />
+        <div
+          dangerouslySetInnerHTML={{
+            __html: job?.desc?.slice(0, 150) || "Not Mentioned",
+          }}
+        />
       </p>
 
       <div className="d-flex justify-content-between align-items-center ms-1 pt-2 mt-4 ">
