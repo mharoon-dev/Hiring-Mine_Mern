@@ -1,9 +1,14 @@
 import "./JobBigCard.css";
 
-export default function JobBigCard({ job }) {
+export default function JobBigCard({ job , setDetailCard , detailCard , details , setdetails}) {
   // console.log(job);
+
+  const handleClick = () => {
+    setDetailCard(!detailCard);
+    setdetails(job);
+  }
   return (
-    <div className="col-sm-6 col-12 mb-3">
+    <div className="col-sm-6 col-12 mb-3" onClick={() => handleClick()}>
       <div
         className="bg-white p-2 py-3 bigCard "
       >

@@ -7,6 +7,8 @@ import { useFetchData } from "../../CumstomHook/useDataFetch";
 import DetailCard from "../../Components/DetailCard/DetailCard";
 
 export default function Jobs() {
+  const [detailCard, setDetailCard] = useState(true);
+  const [details, setdetails] = useState({});
   const [pageNum, setPageNum] = useState(1);
   const { jobName } = useParams();
   const jobs = useFetchData(
@@ -15,11 +17,17 @@ export default function Jobs() {
   return (
     <>
       <NavBarTwo />
-      <div className="container" style={{ marginTop: "30px" , position:"relative" }}>
-        <div className="row" style={{position:"relative"}}>
-          {jobs ? jobs.map((job) => <JobBigCard job={job} />) : "No data Found"}
+      <div
+        className="container"
+        style={{ marginTop: "30px", position: "relative" }}
+      >
+        <div className="row" style={{ position: "relative" }}>
+          {jobs ? jobs.map((job) => <JobBigCard job={job} key={job._id} setDetailCard={setDetailCard} detailCard={detailCard} details={details} setdetails={setdetails}/> ) : "No data Found"}
         </div>
-        <div className="row d-flex justify-content-center align-items-center mb-4" style={{position:"relative"}}>
+        <div
+          className="row d-flex justify-content-center align-items-center mb-4"
+          style={{ position: "relative" }}
+        >
           <div className="col-6 d-flex justify-content-end align-items-center">
             <button
               className="btn"
@@ -35,9 +43,11 @@ export default function Jobs() {
           </div>
         </div>
 
-        <div style={{ position: "absolute", bottom: "0" , right: "10px", top: "0"}}>
-          <DetailCard />
-
+        <div
+          className="w-100  d-flex justify-content-center align-items-center m-0 p-0 detailCardDiv"
+          style={{ position: detailCard ? "fixed" : "relative" }}
+        >
+          <DetailCard detailCard={detailCard} setDetailCard={setDetailCard} details={details} />
         </div>
       </div>
     </>
