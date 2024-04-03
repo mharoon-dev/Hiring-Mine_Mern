@@ -1,6 +1,6 @@
 import "./JobBigCard.css";
 
-export default function JobBigCard({ job , setDetailCard , detailCard , details , setdetails}) {
+export default function JobBigCard({ job , setDetailCard , detailCard  , setdetails}) {
   // console.log(job);
 
   const handleClick = () => {
@@ -55,7 +55,7 @@ export default function JobBigCard({ job , setDetailCard , detailCard , details 
 
         <div className="w-100 d-flex justify-content-end align-items-center mt-2 ">
           <p className="mb-0 pt-2 pe-2" id="views">
-            150 Views
+            {job.views} Views
           </p>
         </div>
       </div>

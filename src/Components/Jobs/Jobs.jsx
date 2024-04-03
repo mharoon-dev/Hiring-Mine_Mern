@@ -1,10 +1,18 @@
 import "./Jobs.css";
 import JobCard from "../JobCard/JobCard";
 import { useFetchData } from "../../CumstomHook/useDataFetch";
+import { useEffect } from "react";
 
 export default  function Jobs() {
   const latestJobs = useFetchData("https://backend-prod.app.hiringmine.com/api/jobAds/all?limit=10&pageNo=1&keyWord=&category=");
   latestJobs && console.log(latestJobs);
+
+  useEffect(() => {
+    if (latestJobs) {
+      dispatch({ type: "CHANGE_JOBS", payload: latestJobs });
+      console.log(state.jobs);
+    };
+  }, []);
   return (
     <div
       className="container-fluid jobsDiv pb-4"
